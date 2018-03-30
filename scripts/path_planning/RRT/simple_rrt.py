@@ -17,7 +17,7 @@ class Node():
 class RRT():
     def __init__(self, start, goal, obstacle_list,
                  sampling_area, expand_dist=1.0,
-                 sample_rate=5, max_iters=500):
+                 sample_rate=5):
         """ 
         @Args:
             start(list): start position [x, y]
@@ -42,7 +42,6 @@ class RRT():
         self.expand_dist = expand_dist
         self.obstacle_list = obstacle_list
         self.sample_rate = sample_rate
-        self.max_iters = max_iters
 
     def __collision_check(self, target_node, obstacle_list):
         for ox, oy, size in obstacle_list:
