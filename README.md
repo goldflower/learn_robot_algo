@@ -4,4 +4,4 @@ Read and go through the code wrote by awesome Mr.AtsushiSakai.
 
 https://github.com/AtsushiSakai/PythonRobotics
 
-I just revised some part for me to understand them easily.
+I tried to revise some part to make me understand the algorithms easier and, if possible, improve the performence.
