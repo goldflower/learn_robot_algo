@@ -7,13 +7,13 @@ import numpy as np
 import random
 from sympy import N, Symbol
 
-delta = 0.1
+delta = 0.1 # for mesh resolution
 min_xy_boundary = -5.0
 max_xy_boundary = 5.0
 
 nb_contours = 50
-alpha = 0.002
-converge_condition = 1e-3
+alpha = 0.002 # learning rate
+converge_condition = 1e-3 # check gradient
 max_iterations = 500
 
 def create_mesh_data(f):
@@ -26,9 +26,6 @@ def create_mesh_data(f):
         Z.append(contour)
     return X, Y, Z
 
-def compute_distance(p1, p2):
-    return np.sqrt((p1[0]-p2[0])**2 + (p1[1]-p2[1])**2)
-
 def gradient_descent(f, coord, converge_condition=converge_condition, max_iterations=max_iterations):
     current_coord = (coord[0], coord[1])
     path = [current_coord]
@@ -36,7 +33,7 @@ def gradient_descent(f, coord, converge_condition=converge_condition, max_iterat
         dx, dy = f.diff(x), f.diff(y)
         alpha_dx = alpha*dx.subs({x:current_coord[0], y:current_coord[1]})
         alpha_dy = alpha*dy.subs({x:current_coord[0], y:current_coord[1]})
-        if sum([abs(alpha_dx), abs(alpha_dy)]) < converge_condition: 
+        if max([abs(alpha_dx), abs(alpha_dy)]) < converge_condition: 
             print("converged!!")
             break
         current_coord = (current_coord[0] - alpha_dx,
