@@ -180,7 +180,7 @@ class RRT():
 
     def check_line_intersect(self, n1, n2, obstacle_list=None):
         """ not really check intersection, just check the distance
-        between the line between n1, n2 and the the center of obstacle
+        between the edge (n1, n2) and the the center of obstacle
         @args:
             n1: node1
             n2: node2
@@ -195,8 +195,9 @@ class RRT():
             obstacle_list = self.obstacle_list
         a_list = []
         b_list = []
-        # ax + y + b = 0
+        # solve ax + y + b = 0
         if n1.x == n2.x:
+            # a simple way to make sure this edge doesn't intersect with any obstacle
             d_x1 = n1.x+0.001
             d_x2 = n1.x-0.001
             a1 = (n1.y - n2.y) / (d_x1 - n2.x)
