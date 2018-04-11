@@ -1,8 +1,10 @@
+"""
+gradient descent implemented using sympy
+
+"""
 import matplotlib.pyplot as plt
-from matplotlib import animation
 import numpy as np
 import random
-import imageio, os
 from sympy import N, Symbol
 
 delta = 0.1
@@ -44,9 +46,6 @@ def gradient_descent(f, coord, converge_condition=converge_condition, max_iterat
         print('exeeds max iterations, may not converged')
 
     return path
-
-def update(i):
-    label = 'timestep {0}'.format(i)
     
 
 if __name__ == '__main__':
